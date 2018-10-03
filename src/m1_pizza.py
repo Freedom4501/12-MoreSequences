@@ -29,15 +29,15 @@ def main():
 
     run_test_generate_points_on_circle()
     run_test_draw_points_on_circle()
-    # run_test_pizza()
-    # run_test_polygon()
-    # run_test_fancy_polygon()
+    run_test_pizza()
+    run_test_polygon()
+    run_test_fancy_polygon()
 
 
 def run_test_generate_points_on_circle():
     """ Tests the   generate_points_on_circle   function. """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # Done: 2. Implement this TEST function.
     #   It TESTS the  generate_points_on_circle  function defined below.
     #   Include at least ** 1 ** ADDITIONAL test (that YOU write).
     #
@@ -225,7 +225,7 @@ def draw_points_on_circle(window, circle, number_of_points, color):
       :type color:            str
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # Done: 4. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPLEMENTATION REQUIREMENT:
@@ -331,7 +331,17 @@ def pizza(window, circle, number_of_slices, color, thickness):
     #    (defined above) to generate the relevant points,
     #    and then draw lines that are based in part on those points.
     # ------------------------------------------------------------------
+    circle.attach_to(window)
+    slices = generate_points_on_circle(circle,number_of_slices)
+    for k in range(len(slices)):
+        start = circle.center
+        end = slices[k]
+        line = rg.Line(start, end)
+        line.color = color
+        line.thickness = thickness
+        line.attach_to(window)
 
+    window.render()
 
 def run_test_polygon():
     """ Tests the   polygon   function. """
@@ -407,7 +417,26 @@ def polygon(window, circle, number_of_segments, color, thickness):
     #    You MUST USE (call) the   generate_points_on_circle
     #    (defined above) to generate the relevant points,
     #    and then draw lines that are based in part on those points.
-    # ------------------------------------------------------------------
+    # -----------------------------------------------------------------
+    circle.attach_to(window)
+    points = generate_points_on_circle(circle,number_of_segments)
+    for k in range(len(points)):
+        if k + 1 < len(points):
+            start = points[k]
+            end = points[k+1]
+            line = rg.Line(start, end)
+
+        else:
+            start = points[k]
+            end = points[0]
+            line = rg.Line(start, end)
+
+        line.color = color
+        line.thickness = thickness
+        line.attach_to(window)
+    window.render()
+
+
 
 
 def run_test_fancy_polygon():
@@ -518,7 +547,7 @@ def fancy_polygon(window, circle, number_of_lines, hops_to_next_point, color, th
       :type thickness:       int
     """
     # ------------------------------------------------------------------
-    # TODO: 10. Implement and test this function.
+    # Done: 10. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPLEMENTATION REQUIREMENT:
@@ -531,7 +560,23 @@ def fancy_polygon(window, circle, number_of_lines, hops_to_next_point, color, th
     #       appropriately.  ASK YOUR INSTRUCTOR FOR AN EXAMPLE.
     ####################################################################
     # ------------------------------------------------------------------
+    circle.attach_to(window)
+    points = generate_points_on_circle(circle, number_of_lines)
+    for k in range(len(points)):
+        if k + hops_to_next_point < len(points):
+            start = points[k]
+            end = points[k + hops_to_next_point]
+            line = rg.Line(start, end)
 
+        else:
+            start = points[k]
+            end = points[k + hops_to_next_point - len(points)]
+            line = rg.Line(start, end)
+
+        line.color = color
+        line.thickness = thickness
+        line.attach_to(window)
+    window.render()
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
