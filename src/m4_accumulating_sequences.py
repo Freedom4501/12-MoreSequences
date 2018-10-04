@@ -16,7 +16,7 @@ def main():
     run_test_make_simple_list()
     run_test_make_simple_string()
     run_test_make_less_simple_string()
-    draw_shapes(rg.ShapesWindow())
+    run_test_draw_shapes()
 
     # ------------------------------------------------------------------
     # TODO: 8. Uncomment the tests below before working TO DO 9.
