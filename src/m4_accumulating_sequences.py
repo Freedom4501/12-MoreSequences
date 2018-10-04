@@ -16,6 +16,7 @@ def main():
     run_test_make_simple_list()
     run_test_make_simple_string()
     run_test_make_less_simple_string()
+    draw_shapes(rg.ShapesWindow())
 
     # ------------------------------------------------------------------
     # TODO: 8. Uncomment the tests below before working TO DO 9.
@@ -291,6 +292,9 @@ def draw_shapes(shapes, window):
     ####################################################################
     # ------------------------------------------------------------------
 
+    for k in range(len(shapes)):
+        shapes[k].attach_to(window)
+    window.render(0.3)
 
 def run_test_rectangles_from_circles():
     """ Tests the   rectangles_from_circles    function. """
