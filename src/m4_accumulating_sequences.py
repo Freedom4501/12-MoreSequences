@@ -17,6 +17,7 @@ def main():
     run_test_make_simple_string()
     run_test_make_less_simple_string()
     run_test_draw_shapes()
+    run_test_rectangles_from_circles()
 
     # ------------------------------------------------------------------
     # TODO: 8. Uncomment the tests below before working TO DO 9.
@@ -281,7 +282,7 @@ def draw_shapes(shapes, window):
       :type window:  rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 9. Implement and test this function. Make sure you do TO DO 8 in main first!
+    # Done: 9. Implement and test this function. Make sure you do TO DO 8 in main first!
     #     The testing code is already written for you (that you just enabled in TO DO 8).
     #
     ####################################################################
@@ -406,6 +407,17 @@ def rectangles_from_circles(circles):
     #            in this function, so DON'T draw anything in here!
     ####################################################################
     # ------------------------------------------------------------------
+    rec = []
+    for k in range(len(circles)):
+        c1_x = circles[k].center.x - circles[k].radius
+        c1_y = circles[k].center.y - circles[k].radius
+        c2_x = circles[k].center.x + circles[k].radius
+        c2_y = circles[k].center.y + circles[k].radius
+        rec = rec + [rg.Rectangle(rg.Point(c1_x,c1_y), rg.Point(c2_x,c2_y))]
+    return  rec
+
+
+
 
 
 # ----------------------------------------------------------------------
