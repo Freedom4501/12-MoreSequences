@@ -76,7 +76,7 @@ def sum_radii(circles):
       :rtype: int | float
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     #
     # Note: No fair using "slices" on ANY of these problems,
@@ -87,7 +87,10 @@ def sum_radii(circles):
     #
     #       Instead, use explicit loops, as you have for other problems.
     # ------------------------------------------------------------------
-
+    radii = 0
+    for k in range(len(circles)):
+        radii = radii + circles[k].radius
+    return radii
 
 # ----------------------------------------------------------------------
 # Some problems iterate (loop) through PART of the sequence,
@@ -154,6 +157,11 @@ def count_last_n_odds(integers, n):
     # TODO: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    count = 0
+    for k in range(n):
+        if integers[len(integers) - k - 1] % 2 == 1:
+            count = count + 1
+    return count
 
 
 # ----------------------------------------------------------------------
@@ -229,6 +237,12 @@ def index_of_first_negative(numbers):
     # TODO: 4. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
+    index = -1
+    for k in range(len(numbers)):
+        if numbers[k] < 0:
+            index = k
+            return index
+    return index
 
 
 def run_test_contains_an_a():
@@ -297,6 +311,12 @@ def contains_an_a(s):
     #   Use an explicit loop, as you have done in the other problems.
     #   No fair using the   count   or   find   string methods.
     # ------------------------------------------------------------------
+
+    for k in range(len(s)):
+        if s[k] == 'a':
+            return True
+    return False
+
 
 
 # ----------------------------------------------------------------------
